@@ -225,3 +225,8 @@ async def parse_receipt(
         parsed["category"] = "Other"
 
     return parsed
+
+
+# Separate aggregate-only coaching endpoint; existing receipt parsing stays unchanged.
+from spending_coach import create_spending_router
+app.include_router(create_spending_router(client, MODEL_NAME))
